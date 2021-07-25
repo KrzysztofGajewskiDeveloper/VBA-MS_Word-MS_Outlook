@@ -5,6 +5,7 @@ Important references: Microsoft Outlook 16.0 Object Library, Microsoft Word 16.0
 The macro developed to provide mass mailing with standarized layouts to the recipients. 
 
 1) Turning off screen updating and visibility of the application can make the code run faster
+
         .ScreenUpdating = False
         .DisplayAlerts = False
         
