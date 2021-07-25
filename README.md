@@ -2,7 +2,7 @@
 
 Important references: Microsoft Outlook 16.0 Object Library, Microsoft Word 16.0 Object Library
 
-The macro has been developed to provide mass mailing with standarized layouts to the receipients. 
+The macro developed to provide mass mailing with standarized layouts to the recipients. 
 
 1) Turning off screen updating and visibility of the application can make the code run faster
 
@@ -16,32 +16,27 @@ The macro has been developed to provide mass mailing with standarized layouts to
     Set doc = wd.Documents.Open(Path)
     wd.Options.SaveInterval = 0
     
-3) Loop 
-    
-    LastRow = wsInput.Cells(Rows.Count, 1).End(xlUp).Row
- 
+3) Column A - email addressess
+   Column B - first placeholder which will vary for each recipient
+   Column C - second placeholder which will vary for each recipient
+  
         For i = 2 To LastRow
               
             Recipient = wsInput.Cells(i, "A")
             Input1 = wsInput.Cells(i, "B")
             Input2 = wsInput.Cells(i, "C")
+
+
+4) Replacing the placeholders with the input from above-mentioned columns (the same action for both placeholders)
                     
-                    With wd.Selection
                         .Find.Execute findText:=PlaceHolder
                         .InsertAfter Input1
                         .Find.Text = PlaceHolder
                         .Find.Replacement.Text = vbNullString
                         .Find.Execute Replace:=wdReplaceAll
-                    End With
-                    
-                    With wd.Selection
-                        .Find.Execute findText:=PlaceHolder2
-                        .InsertAfter Input2
-                        .Find.Text = PlaceHolder2
-                        .Find.Replacement.Text = vbNullString
-                        .Find.Execute Replace:=wdReplaceAll
-                    End With
                         
+5) Pasting the output to the body of the email and sending to each recipient with a specific output based on a standarized template
+
                     Set OlEmail = OlApp.CreateItem(olMailItem)
                     With OlEmail
                         .BodyFormat = olFormatRichText
@@ -53,33 +48,11 @@ The macro has been developed to provide mass mailing with standarized layouts to
                         Editor.Content.Paste
                         .send
                     End With
-            
+                    
+6) Undo method to allow working on 1 word without closing and reopening the document
+
                 For Undo = 1 To 4
                     doc.Undo
                 Next Undo
         
-        Next i
         
-    With Application
-        .ScreenUpdating = True
-        .DisplayAlerts = True
-        .Visible = True
-    End With
-    
-    wd.DisplayAlerts = False
-    doc.Close SaveChanges:=False
-    wd.Quit SaveChanges:=False
-    
-End Sub
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
