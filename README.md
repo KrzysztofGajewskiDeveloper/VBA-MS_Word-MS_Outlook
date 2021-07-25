@@ -4,7 +4,8 @@ Important references: Microsoft Outlook 16.0 Object Library, Microsoft Word 16.0
 
 The macro has been developed to provide mass mailing with standarized layouts to the receipients. 
 
-At the beginning we are copying the Word document content to the clipboard (create word object and set the document)
+1) Create word object and set the document in order to copy the word document content to the clipboard
 
- 
+    Set wd = New Word.Application
+    Set doc = wd.Documents.Open(Path)
 
