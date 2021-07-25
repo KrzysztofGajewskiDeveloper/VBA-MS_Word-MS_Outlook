@@ -32,7 +32,7 @@ The macro developed to provide mass mailing with standarized layouts to the reci
                         .Find.Replacement.Text = vbNullString
                         .Find.Execute Replace:=wdReplaceAll
                         
-5) Pasting the output to the body of the email and sending to each recipient with a specific output based on a standarized template
+5) Pasting the output to the body of the email and sending to each recipient with a specific output based on the standarized template
 
                     Set OlEmail = OlApp.CreateItem(olMailItem)
                     With OlEmail
