@@ -5,9 +5,6 @@ Important references: Microsoft Outlook 16.0 Object Library, Microsoft Word 16.0
 The macro developed to provide mass mailing with standarized layouts to the recipients. 
 
 1) Turning off screen updating and visibility of the application can make the code run faster
-
-        .ScreenUpdating = False
-        .Visible = False
     
 2) Create important objects - Outlook, Word, document(word). Set the SaveInterval property to zero to turn off saving AutoRecover information.
     
