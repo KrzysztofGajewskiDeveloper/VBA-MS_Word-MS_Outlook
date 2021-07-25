@@ -9,12 +9,9 @@ The macro developed to provide mass mailing with standarized layouts to the reci
         .ScreenUpdating = False
         .DisplayAlerts = False
         
-2) Create important objects - Outlook, Word, document(word). Set the SaveInterval property to zero to turn off saving AutoRecover information.
+2) Set the SaveInterval property to zero to turn off saving AutoRecover information.
     
-    Set OlApp = New Outlook.Application
-    Set wd = New Word.Application
-    Set doc = wd.Documents.Open(Path)
-    wd.Options.SaveInterval = 0
+        .Options.SaveInterval = 0
     
 3) Column A - email addressess
    Column B - first placeholder which will vary for each recipient
